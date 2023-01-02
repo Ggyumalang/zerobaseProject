@@ -17,21 +17,24 @@ import com.model.Row;
 import com.model.WifiInfoDTO;
 
 public class WifiService {
+	private String url = "jdbc:sqlite:C:\\Users\\a\\MySQLiteDB";
+    private String dbUserId = "wifiUser";
+    private String dbPassword = "zerobase";
+    private String className = "org.sqlite.JDBC";
+    
 	/**
      * 테이블에 와이파이 정보 Insert
      * @param member 회원 정보
      * */
     public int register(Row row) {
 
-        String url = "jdbc:mariadb://3.35.213.144:3306/wifi_db";
-        String dbUserId = "wifiUser";
-        String dbPassword = "zerobase";
+        
         int result = 0;
 
         Connection connection = null;
         PreparedStatement ps = null;
         try {
-            Class.forName("org.mariadb.jdbc.Driver");
+            Class.forName(className);
             connection = DriverManager.getConnection(url,dbUserId,dbPassword);
             
             String sql = "INSERT INTO WIFI_INFO VALUES ( ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
@@ -90,15 +93,12 @@ public class WifiService {
      * @param
      * */    
     public int registerHist(double lat , double lnt) {
-    	 String url = "jdbc:mariadb://3.35.213.144:3306/wifi_db";
-         String dbUserId = "wifiUser";
-         String dbPassword = "zerobase";
          int result = 0;
 
          Connection connection = null;
          PreparedStatement ps = null;
          try {
-             Class.forName("org.mariadb.jdbc.Driver");
+             Class.forName(className);
              connection = DriverManager.getConnection(url,dbUserId,dbPassword);
              
              String sql = "INSERT INTO LOC_INQ_H ( lat , lnt , inq_dtm ) "
@@ -137,15 +137,12 @@ public class WifiService {
      * */    
     public List<LocInqHistDTO> LocInqHistSelect(){
         
-    	String url = "jdbc:mariadb://3.35.213.144:3306/wifi_db";
-        String dbUserId = "wifiUser";
-        String dbPassword = "zerobase";
         Connection connection = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         List<LocInqHistDTO> resultList = new ArrayList<>();
         try {
-            Class.forName("org.mariadb.jdbc.Driver");
+            Class.forName(className);
             connection = DriverManager.getConnection(url,dbUserId,dbPassword);
 
 
@@ -193,15 +190,12 @@ public class WifiService {
      * */    
     public List<NearDistDTO> nearWifiSelect(double lat , double lnt){
         
-    	String url = "jdbc:mariadb://3.35.213.144:3306/wifi_db";
-        String dbUserId = "wifiUser";
-        String dbPassword = "zerobase";
         Connection connection = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         List<NearDistDTO> resultList = new ArrayList<>();
         try {
-            Class.forName("org.mariadb.jdbc.Driver");
+            Class.forName(className);
             connection = DriverManager.getConnection(url,dbUserId,dbPassword);
 
 
@@ -269,15 +263,12 @@ public class WifiService {
      * @param
      * */
     public int deleteAll()  {
-		String url = "jdbc:mariadb://3.35.213.144:3306/wifi_db";
-	    String dbUserId = "wifiUser";
-	    String dbPassword = "zerobase";
         int result = 0;
 
         Connection connection = null;
         PreparedStatement ps = null;
         try {
-            Class.forName("org.mariadb.jdbc.Driver");
+            Class.forName(className);
             connection = DriverManager.getConnection(url,dbUserId,dbPassword);
 
             String sql = "DELETE FROM WIFI_INFO";
@@ -310,15 +301,12 @@ public class WifiService {
      * @param
      * */
     public int deleteHist(int inqNo)  {
-		String url = "jdbc:mariadb://3.35.213.144:3306/wifi_db";
-	    String dbUserId = "wifiUser";
-	    String dbPassword = "zerobase";
         int result = 0;
 
         Connection connection = null;
         PreparedStatement ps = null;
         try {
-            Class.forName("org.mariadb.jdbc.Driver");
+            Class.forName(className);
             connection = DriverManager.getConnection(url,dbUserId,dbPassword);
 
             String sql = "DELETE FROM LOC_INQ_H WHERE inqNo = ?";

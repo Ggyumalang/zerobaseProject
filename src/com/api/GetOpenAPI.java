@@ -67,8 +67,9 @@ public class GetOpenAPI {
 		WifiInfoDTO infoDTO = null;
 		try {
 			infoDTO = gson.fromJson(sb.toString(), WifiInfoDTO.class);
-			System.out.println(infoDTO.getTbPublicWifiInfo().getRow().get(0).getLat());
+			System.out.println("Open API 와이파이 정보 가져오기 성공!");
 		} catch (JsonParseException e) {
+			System.out.println("Open API 와이파이 정보 가져오기 실패....");
 			e.printStackTrace();
 		}
 		return infoDTO;
