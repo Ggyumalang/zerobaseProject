@@ -32,6 +32,8 @@ public class NearWifiSearchService extends HttpServlet {
 			List<NearDistDTO> histList = ws.nearWifiSelect(lat, lnt);
 			if(histList != null) {
 				System.out.println("근처 wifi 목록 조회 성공!");
+				request.setAttribute("lat", lat);
+				request.setAttribute("lnt", lnt);
 				request.setAttribute("histList", histList);
 				request.getRequestDispatcher("home.jsp").forward(request, response);
 			}else {

@@ -38,6 +38,24 @@
 	</style>
 </head>
 <body>
+
+	<%
+		Enumeration<String> enums = request.getAttributeNames();
+		boolean isContains = false;
+		while(enums.hasMoreElements()){
+			if(enums.nextElement().equals("histList")){
+				isContains = true;
+			}
+		}
+		List<NearDistDTO> list = new ArrayList<>();
+		double lat = 0.0;
+		double lnt = 0.0;
+		if(isContains){
+			list = (List<NearDistDTO>)request.getAttribute("histList");
+			lat = Double.parseDouble(String.valueOf(request.getAttribute("lat")));
+			lnt = Double.parseDouble(String.valueOf(request.getAttribute("lnt")));
+		}
+	%>
 	
 	<h1> 와이파이 정보 구하기</h1>
 	<div>
@@ -49,9 +67,9 @@
 	<div>
 		<form action = "NearWifiSearchService.do" method="post">
 			<strong>LAT:</strong>
-			<input type = "text" value = "0.0" name = "lat" id = "lat">
+			<input type = "text" value = <%= lat %> name = "lat" id = "lat">
 			<strong>&nbsp&nbspLONG:</strong>
-			<input type = "text" value = "0.0" name = "long" id = "long">
+			<input type = "text" value = <%= lnt %>  name = "long" id = "long">
 			<input type = "button" value = "내 위치 가져오기" onclick="getUserLocation()" id = "button">
 			<button type = "submit" id = "button">근처 WIFI 정보 보기</button>
 		</form>
@@ -94,24 +112,16 @@
 			</tr>
 		</thead>
 		<tbody>
-			<%			
-			            Enumeration<String> enums = request.getAttributeNames();
-						boolean isContains = false;
-						while(enums.hasMoreElements()){
-							if(enums.nextElement().equals("histList")){
-								isContains = true;
-							}
-						}
-						List<NearDistDTO> list = new ArrayList<>(); 
-						if(isContains){
-							list = (List<NearDistDTO>)request.getAttribute("histList");
-						}else{ %>
+					<%			
+						if(!isContains){
+					%>
 							<tr height = "100">
 								<td colspan="17">
 									<b>위치정보를 입력한 후에 조회해 주세요</b>
 								</td>
 							</tr>
-						<%}
+					<%	
+						}
 						for(NearDistDTO ndt : list){
 					%>
 						<tr>
