@@ -31,6 +31,13 @@
    2) history.jsp : 위치 히스토리 목록을 구성하는 jsp
    3) home.jsp : 홈 화면을 구성하는 jsp
 
+-----
+## 참고
+IDE는 Eclipse 사용
+DB는 sqlite 사용
+(처음에 프로젝트를 진행할 때는 좀 더 익숙한 MariaDB로 하였고 그 다음 sqlite로 해보았는데 둘의 속도를 비교해보니 sqlite가 좀 더 빨랐습니다.)
+ERD는 EXERD 사용
+
 
 
 
