@@ -3,39 +3,39 @@
 <%@page import="com.model.NearDistDTO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>와이파이 정보 구하기</title>
-	<style>
-		table {
-			width : 100%;
-		}
-		
-		thead{
-			border-width : 0px;
-			background-color : #81DAE3;
-			color: white;
-		}
-		
-		#button{
-			border-width : 0px;
-			background-color : #00a3d2;
-			color: white;
-		}
-		th, td {
-			border-width : 0px;
-		}
-		
-		tbody {
-			background-color : #D6D6D6;
-			border : solid 1px #000;
-			text-align: center;
-		}
-		
-	</style>
+<style>
+table {
+	width: 100%;
+}
+
+thead {
+	border-width: 0px;
+	background-color: #81DAE3;
+	color: white;
+}
+
+#button {
+	border-width: 0px;
+	background-color: #00a3d2;
+	color: white;
+}
+
+th, td {
+	border-width: 0px;
+}
+
+tbody {
+	background-color: #D6D6D6;
+	border: solid 1px #000;
+	text-align: center;
+}
+</style>
 </head>
 <body>
 
@@ -47,34 +47,36 @@
 				isContains = true;
 			}
 		}
+		
 		List<NearDistDTO> list = new ArrayList<>();
+		
 		double lat = 0.0;
 		double lnt = 0.0;
+		
 		if(isContains){
 			list = (List<NearDistDTO>)request.getAttribute("histList");
 			lat = Double.parseDouble(String.valueOf(request.getAttribute("lat")));
 			lnt = Double.parseDouble(String.valueOf(request.getAttribute("lnt")));
 		}
 	%>
-	
-	<h1> 와이파이 정보 구하기</h1>
+
+	<h1>와이파이 정보 구하기</h1>
 	<div>
-		<a href = "home.jsp">홈</a> |
-		<a href = "history.jsp">위치 히스토리 목록</a> |
-		<a href = "getWifiInfo.jsp">Open API 와이파이 정보 가져오기</a>
+		<a href="home.jsp">홈</a> | <a href="history.jsp">위치 히스토리 목록</a> | <a
+			href="getWifiInfo.jsp">Open API 와이파이 정보 가져오기</a>
 	</div>
 	<br>
 	<div>
-		<form action = "NearWifiSearchService.do" method="post">
-			<strong>LAT : </strong>
-			<input type = "text" value = <%= lat %> name = "lat" id = "lat">
-			<strong>&nbsp&nbspLONG : </strong>
-			<input type = "text" value = <%= lnt %>  name = "long" id = "long">
-			<input type = "button" value = "내 위치 가져오기" onclick="getUserLocation()" id = "button">
-			<button type = "submit" id = "button">근처 WIFI 정보 보기</button>
+		<form action="NearWifiSearchService.do" method="post">
+			<strong>LAT : </strong> <input type="text" value=<%= lat %>
+				name="lat" id="lat"> <strong>&nbsp&nbspLONG : </strong> <input
+				type="text" value=<%= lnt %> name="long" id="long"> <input
+				type="button" value="내 위치 가져오기" onclick="getUserLocation()"
+				id="button">
+			<button type="submit" id="button">근처 WIFI 정보 보기</button>
 		</form>
 	</div>
-	
+
 	<script>     
         function getUserLocation() {
            if (!navigator.geolocation) {
@@ -88,7 +90,7 @@
         }
        
     </script>
-    
+
 	<table>
 		<thead>
 			<tr>
@@ -112,40 +114,38 @@
 			</tr>
 		</thead>
 		<tbody>
-					<%			
-						if(!isContains){
-					%>
-							<tr height = "100">
-								<td colspan="17">
-									<b>위치정보를 입력한 후에 조회해 주세요</b>
-								</td>
-							</tr>
-					<%	
-						}
-						for(NearDistDTO ndt : list){
-					%>
-						<tr>
-							<td><%= ndt.getDistance() %> </td>
-							<td><%= ndt.getXSwifiMgrNo() %> </td>
-							<td><%= ndt.getXSwifiWrdofc() %> </td>
-							<td><%= ndt.getXSwifiMainNm() %> </td>
-							<td><%= ndt.getXSwifiAdres1() %> </td>
-							<td><%= ndt.getXSwifiAdres2() %> </td>
-							<td><%= ndt.getXSwifiInstlFloor() %> </td>
-							<td><%= ndt.getXSwifiInstlTy() %> </td>
-							<td><%= ndt.getXSwifiInstlMby() %> </td>
-							<td><%= ndt.getXSwifiSvcSe() %> </td>
-							<td><%= ndt.getXSwifiCmcwr() %> </td>
-							<td><%= ndt.getXSwifiCnstcYear() %> </td>
-							<td><%= ndt.getXSwifiInoutDoor() %> </td>
-							<td><%= ndt.getXSwifiRemars3() %> </td>
-							<td><%= ndt.getLat() %> </td>
-							<td><%= ndt.getLnt() %> </td>
-							<td><%= ndt.getWorkDttm() %> </td>
-						</tr>
-					<%	
-						}
-					%>
+			<%			
+				if(!isContains){
+			%>
+			<tr height="100">
+				<td colspan="17"><b>위치정보를 입력한 후에 조회해 주세요</b></td>
+			</tr>
+			<%	
+				}
+				for(NearDistDTO ndt : list){
+			%>
+			<tr>
+				<td><%= ndt.getDistance() %></td>
+				<td><%= ndt.getXSwifiMgrNo() %></td>
+				<td><%= ndt.getXSwifiWrdofc() %></td>
+				<td><%= ndt.getXSwifiMainNm() %></td>
+				<td><%= ndt.getXSwifiAdres1() %></td>
+				<td><%= ndt.getXSwifiAdres2() %></td>
+				<td><%= ndt.getXSwifiInstlFloor() %></td>
+				<td><%= ndt.getXSwifiInstlTy() %></td>
+				<td><%= ndt.getXSwifiInstlMby() %></td>
+				<td><%= ndt.getXSwifiSvcSe() %></td>
+				<td><%= ndt.getXSwifiCmcwr() %></td>
+				<td><%= ndt.getXSwifiCnstcYear() %></td>
+				<td><%= ndt.getXSwifiInoutDoor() %></td>
+				<td><%= ndt.getXSwifiRemars3() %></td>
+				<td><%= ndt.getLat() %></td>
+				<td><%= ndt.getLnt() %></td>
+				<td><%= ndt.getWorkDttm() %></td>
+			</tr>
+			<%	
+					}
+			%>
 		</tbody>
 	</table>
 </body>

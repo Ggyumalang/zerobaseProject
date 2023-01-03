@@ -3,7 +3,7 @@ package com.model;
 import java.sql.Timestamp;
 
 public class NearDistDTO {
-	
+
 	private double distance;
 	private String xSwifiMgrNo;
 	private String xSwifiWrdofc;

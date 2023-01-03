@@ -17,35 +17,46 @@ import com.model.NearDistDTO;
  */
 @WebServlet("/NearWifiSearchService.do")
 public class NearWifiSearchService extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
 		double lat = Double.parseDouble(request.getParameter("lat"));
 		double lnt = Double.parseDouble(request.getParameter("long"));
-		//받아온 값을 db history에 저장하고
+		
+		// 받아온 값을 db history에 저장하고
 		WifiService ws = new WifiService();
+		
 		int result = ws.registerHist(lat, lnt);
-		if(result >= 1) {
+		
+		if (result > 0) {
+			
 			System.out.println("데이터 삽입 성공");
+			
 			List<NearDistDTO> histList = ws.nearWifiSelect(lat, lnt);
-			if(histList != null) {
+			
+			if (histList != null) {
+				
 				System.out.println("근처 wifi 목록 조회 성공!");
+				
 				request.setAttribute("lat", lat);
 				request.setAttribute("lnt", lnt);
 				request.setAttribute("histList", histList);
 				request.getRequestDispatcher("home.jsp").forward(request, response);
-			}else {
+				
+			} else {
 				System.out.println("근처 wifi 목록 조회 실패!");
 			}
-		}else {
+		} else {
 			System.out.println("데이터 삽입 실패");
 			return;
 		}
-		
-		//이를 기준으로 정렬해서 보여줄 것을 20개까지.
-		
+
 	}
 
 }
