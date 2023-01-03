@@ -66,9 +66,9 @@
 	<br>
 	<div>
 		<form action = "NearWifiSearchService.do" method="post">
-			<strong>LAT:</strong>
+			<strong>LAT : </strong>
 			<input type = "text" value = <%= lat %> name = "lat" id = "lat">
-			<strong>&nbsp&nbspLONG:</strong>
+			<strong>&nbsp&nbspLONG : </strong>
 			<input type = "text" value = <%= lnt %>  name = "long" id = "long">
 			<input type = "button" value = "내 위치 가져오기" onclick="getUserLocation()" id = "button">
 			<button type = "submit" id = "button">근처 WIFI 정보 보기</button>

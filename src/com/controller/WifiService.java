@@ -231,7 +231,7 @@ public class WifiService {
             	nearDist.setXSwifiRemars3(rs.getString(14));
             	nearDist.setLat(rs.getString(15));
             	nearDist.setLnt(rs.getString(16));
-            	nearDist.setWorkDttm(rs.getString(17));
+            	nearDist.setWorkDttm(rs.getTimestamp(17));
                 resultList.add(nearDist);
             }
 

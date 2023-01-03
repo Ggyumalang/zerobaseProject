@@ -1,5 +1,6 @@
 package com.model;
 
+import java.sql.Timestamp;
 
 public class NearDistDTO {
 	
@@ -19,7 +20,7 @@ public class NearDistDTO {
 	private String xSwifiRemars3;
 	private String lat;
 	private String lnt;
-	private String workDttm;
+	private Timestamp workDttm;
 
 	public String getXSwifiMgrNo() {
 		return xSwifiMgrNo;
@@ -141,11 +142,11 @@ public class NearDistDTO {
 		this.lnt = lnt;
 	}
 
-	public String getWorkDttm() {
+	public Timestamp getWorkDttm() {
 		return workDttm;
 	}
 
-	public void setWorkDttm(String workDttm) {
+	public void setWorkDttm(Timestamp workDttm) {
 		this.workDttm = workDttm;
 	}
 
