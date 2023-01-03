@@ -15,8 +15,7 @@
 	%>
 	<h1> ID <%= inqNo %> 의 히스토리 목록 삭제에 실패하였습니다... </h1>
 	<div>
-		<a href="home.jsp">홈</a> | <a href="history.jsp">위치 히스토리 목록</a> | <a
-			href="getWifiInfo.jsp">Open API 와이파이 정보 가져오기</a>
+		<a href="home.jsp">홈</a> | <a href="history.jsp">위치 히스토리 목록</a>
 	</div>
 </body>
 </html>
