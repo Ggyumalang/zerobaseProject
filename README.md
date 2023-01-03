@@ -30,6 +30,7 @@
    1) getWifiInfo.jsp :  Open API 와이파이 정보 가져온 결과를 보여주는 jsp
    2) history.jsp : 위치 히스토리 목록을 구성하는 jsp
    3) home.jsp : 홈 화면을 구성하는 jsp
+   4) historyDeleteFail.jsp : 위치 히스토리 삭제 실패 시를 구성하는 jsp
 
 -----
 ## 참고
